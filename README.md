@@ -16,7 +16,6 @@ This will generate an `ikev2-vpn.mobileconfig` file, transfer it your local comp
 
 ## 3. Export Shared secret
 
-    docker run -i -t -rm --volumes-from ikev2-vpn-xauth
-azmenak/ikev2-vpn-xauth generate-sharedkey > SHAREDKEY
+    docker run -i -t --rm --volumes-from ikev2-vpn-xauth azmenak/ikev2-vpn-xauth generate-sharedkey > SHAREDKEY
 
 *IKEv2 protocol requires iOS 8 or later, Mac OS X 10.10 (Yosemite) is not supported yet.*
