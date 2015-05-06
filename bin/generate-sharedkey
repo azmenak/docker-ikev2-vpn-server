@@ -1,0 +1,5 @@
+#!/bin/bash
+
+CONN_SHARED_SECRET=$(cat /etc/ipsec.secrets | sed 's/.*"\(.*\)"/\1/g')
+
+cat ${CONN_SHARED_SECRET}
