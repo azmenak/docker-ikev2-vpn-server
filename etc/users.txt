@@ -1,2 +1,0 @@
-adam : XAUTH "november"
-alina : XAUTH "dalian"
