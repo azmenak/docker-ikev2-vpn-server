@@ -9,8 +9,8 @@ iptables -t nat -A POSTROUTING -s 10.8.0.0/16 -o eth0 -j MASQUERADE
 # hotfix for openssl `unable to write 'random state'` stderr
 SHARED_SECRET="123$(openssl rand -base64 32 2>/dev/null)"
 [ -f /etc/ipsec.secrets ] || echo ": PSK \"${SHARED_SECRET}\"" > /etc/ipsec.secrets
-echo "adam : XAUTH \"november\"" >> /etc/ipsec.secrets
-echo "alina : XAUTH \"dalian\"" >> /etc/ipsec.secrets
+echo "adam : EAP \"november\"" >> /etc/ipsec.secrets
+echo "alina : EAP \"dalian\"" >> /etc/ipsec.secrets
 
 # http://wiki.loopop.net/doku.php?id=server:vpn:strongswanonopenvz
 /usr/sbin/ipsec start --nofork
