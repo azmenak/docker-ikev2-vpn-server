@@ -16,7 +16,7 @@
 : ${CONN_UUID=$(uuidgen)}
 : ${CONN_HOST=${HOST}}
 : ${CONN_REMOTE_IDENTIFIER=${HOST}}
-CONN_SHARED_SECRET=$(cat /etc/ipsec.secrets | sed 's/.*"\(.*\)"/\1/g')
+CONN_SHARED_SECRET=$(cat /etc/ipsec.secrets | sed 's/.*"\(.*\)"/\1/g' | head -n 1)
 
 cat <<EOF
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
