@@ -1,9 +1,13 @@
 #!/bin/bash
 
 [ "no${DOCKER_NAME}" = "no" ] && echo "\$DOCKER_NAME variable required." && exit 1
+DOCKER_NAME="ikev2-vpn-xauth"
 
 docker stop ${DOCKER_NAME}
 docker rm ${DOCKER_NAME}
 docker build -t azmenak/${DOCKER_NAME} .
 docker run -d --name ${DOCKER_NAME} --privileged -p 500:500/udp -p 4500:4500/udp azmenak/${DOCKER_NAME}
+
+echo "\nShared Secret:"
+docker exec azmenak/${DOCKER_NAME} cat /etc/ipsec.secrets | sed 's/.*"\(.*\)"/\1/g' | head -n 1
 
