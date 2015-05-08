@@ -1,0 +1,9 @@
+#!/bin/bash
+
+[ "no${DOCKER_NAME}" = "no" ] && echo "\$DOCKER_NAME variable required." && exit 1
+
+docker stop ${DOCKER_NAME}
+docker rm ${DOCKER_NAME}
+docker build -t azmenak/${DOCKER_NAME} .
+docker run -d --name ${DOCKER_NAME} --privileged -p 500:500/udp -p 4500:4500/udp azmenak/${DOCKER_NAME}
+
